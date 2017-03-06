@@ -19,7 +19,7 @@
              font-family: "Berlin Sans FB";
     font-size: 40px;
     color: #D2691E;
-    text-align:center;
+    text-align:center;<a href="Sesion.aspx">Sesion.aspx</a>
     
             }
         .frase
@@ -63,9 +63,11 @@
                     <asp:Panel ID="panelsesion" runat="server" Width="100%">
                         <table width="100%">
                              <tr>
-                                <td colspan="2" align="left">
+                                <td colspan="2" align="center">
                                     <br />
                                     <br />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:Label ID="usuario0" runat="server" CssClass="nota">Ingresa tus credenciales</asp:Label>
                                     <br />
                                     <br />
                                  </td>
@@ -98,9 +100,9 @@
                                 <td class="style31">
                                     &nbsp;</td>
                                 <td align="left">
+                                    <asp:Button ID="Button1" runat="server" Height="30px" 
+                                        onclick="Button1_Click" Text="Iniciar" Width="255px" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <asp:ImageButton ID="btnentrar" runat="server" Height="20px" 
-                                        onclick="btnentrar_Click" Width="163px" />
                                     <br />
                                 </td>
                             </tr>
@@ -112,6 +114,7 @@
                                 <br />
                                 <br />
                                 <asp:Label ID="lb" runat="server"></asp:Label>
+                                <asp:Label ID="lbl1" runat="server" Enabled="False"></asp:Label>
                                 </td></tr>
                         </table>
                     </asp:Panel>
@@ -130,20 +133,16 @@
                                 <asp:Image ID="img1" runat="server" Height="260px" Width="60%" />
                              </td>
                             <td colspan="2" rowspan="5" class="nota">
-                                <asp:Label ID="cal" runat="server" CssClass="nota" Text="Calificacion:"></asp:Label>
+                                <asp:Label ID="usuario" runat="server" CssClass="nota"></asp:Label>
                                 <br />
-                                <asp:Label ID="lblnota" runat="server" BorderStyle="None" CssClass="nota1" 
-                                    Height="80%" Width="40%"></asp:Label>
                              </td>
-                            <td>Acciones</td>
+                            <td>&nbsp;</td>
                             <td width="40px"></td>                            
                         </tr>
                          <tr>
                             <td width="40px"></td>
                             <td>
-                                <asp:ImageButton ID="Administracion" runat="server" Height="20px" 
-                                    onclick="Administracion_Click" Visible="False" Width="80%" />
-                             </td>
+                                &nbsp;</td>
                             <td width="40px"></td>                            
                         </tr>
                          <tr>
@@ -170,66 +169,50 @@
                         </tr>
                         <tr>
                             <td width="70px"></td>
-                            <td align="right" width="170px">Nombre:</td>
+                            <td align="right" width="170px">Nombres y Apellidos:</td>
                             <td align="left" width="300px">
                                 <asp:TextBox ID="txtNombre" runat="server" Width="90%"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:ImageButton ID="baja" runat="server" Height="20px" Width="80%" 
-                                    onclick="baja_Click" />
+                                <asp:ImageButton ID="cerrarSesion" runat="server" Height="20px" 
+                                    onclick="cerrarSesion_Click" Width="80%" />
                             </td>
-                            <td width="40px">Baja</td>                            
+                            <td width="40px">Salir</td>                            
                         </tr>
                         <tr>
                             <td width="70px"></td>
-                            <td align="right">Apellido:</td>
+                            <td align="right">Perfil:</td>
                             <td align="left">
                                 <asp:TextBox ID="txtApellido" runat="server" Width="90%"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:ImageButton ID="registraractividad" runat="server" Height="20px" 
-                                    onclick="registraractividad_Click" Width="80%" />
-                            </td>
-                            <td width="40px">Ract</td>                            
+                                &nbsp;</td>
+                            <td width="40px">&nbsp;</td>                            
                         </tr>
                         <tr>
                             <td width="70px"></td>
-                            <td align="right">Fecha de Nacimiento:</td>
+                            <td align="right">&nbsp;</td>
                             <td align="left">
-                                <asp:TextBox ID="txtFechaNaci" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td>
-                                <asp:ImageButton ID="empleados" runat="server" Height="20px" 
-                                    style="margin-bottom: 0px" Width="80%" onclick="empleados_Click" />
-                            </td>
-                            <td width="40px">Emp</td>                            
+                                &nbsp;</td>
+                            <td width="40px">&nbsp;</td>                            
                         </tr>
                         <tr>
                             <td width="70px"></td>
                             <td align="right">
-                                Instruccion:</td>
+                                &nbsp;</td>
                             <td align="left">
-                                <asp:DropDownList ID="ddlInstruccion" runat="server" 
-                                    DataSourceID="Instruccion" DataTextField="nombre" 
-                                    DataValueField="id_Instruccion" Height="20px" Width="91%">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="Instruccion" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:Conn %>" 
-                                    SelectCommand="SELECT * FROM [INSTRUCCION]"></asp:SqlDataSource>
-                                <asp:TextBox ID="txtInstruccion" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td>
-                                <asp:ImageButton ID="cerrarSesion" runat="server" Height="20px" Width="80%" 
-                                    onclick="cerrarSesion_Click" />
-                            </td>
-                            <td width="40px">Sal</td>                            
+                                &nbsp;</td>
+                            <td width="40px">&nbsp;</td>                            
                         </tr>
                         <tr>
                             <td width="70px"></td>
-                            <td align="right">Teléfono:</td>
+                            <td align="right">&nbsp;</td>
                             <td align="left">
-                                <asp:TextBox ID="txtTelefono" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td>
                                 &nbsp;</td>
                             <td width="40px"></td>                            
@@ -239,10 +222,9 @@
                             <td align="right" class="style30">
                                 <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" />
                             </td>
-                            <td align="right">Descripción:</td>
+                            <td align="right">&nbsp;</td>
                             <td align="left">
-                                <asp:TextBox ID="txtDescripcion" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td></td>
                             <td width="40px"></td>                            
                         </tr>
@@ -251,22 +233,9 @@
                             <td align="right" class="style30">
                                 &nbsp;</td>
                             <td align="right">
-                                Cargo:</td>
+                                &nbsp;</td>
                             <td align="left">
-                                <asp:DropDownList ID="ddlCargo" runat="server" 
-                                    DataSourceID="Cargo" DataTextField="nombreC" DataValueField="id_Cargo" 
-                                    Height="20px" Width="91%">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="Cargo" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:Conn %>" 
-                                    SelectCommand="SELECT * FROM [CARGO] WHERE (([estadoC] = @estadoC) AND ([nombreC] &lt;&gt; @nombreC))">
-                                    <SelectParameters>
-                                        <asp:Parameter DefaultValue="Activo" Name="estadoC" Type="String" />
-                                        <asp:Parameter DefaultValue="Administrador" Name="nombreC" Type="String" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
-                                <asp:TextBox ID="txtCargo" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td></td>
                             <td width="40px"></td>                            
                         </tr>
@@ -275,22 +244,9 @@
                             <td align="right" class="style30">
                                 &nbsp;</td>
                             <td align="right">
-                                Unidad:</td>
+                                &nbsp;</td>
                             <td align="left">
-                                <asp:DropDownList ID="ddlUnidad" runat="server" 
-                                    DataSourceID="Unidad" DataTextField="nombreU" DataValueField="id_Unidad" 
-                                    Height="20px" onselectedindexchanged="ddlUnidad0_SelectedIndexChanged" 
-                                    Width="91%">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="Unidad" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:Conn %>" 
-                                    SelectCommand="SELECT * FROM [UNIDAD] WHERE ([estadoU] = @estadoU)">
-                                    <SelectParameters>
-                                        <asp:Parameter DefaultValue="Activo" Name="estadoU" Type="String" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
-                                <asp:TextBox ID="txtUnidad" runat="server" Width="90%"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td></td>
                             <td width="40px"></td>                            
                         </tr>
@@ -311,7 +267,7 @@
                             <td class="style30"></td>
                             <td>&nbsp;</td>
                              <td>
-                                 Actividades Realizadas.</td>
+                                 Cuestionarios realizados</td>
                             <td></td>
                             <td width="40px"></td>                            
                         </tr>

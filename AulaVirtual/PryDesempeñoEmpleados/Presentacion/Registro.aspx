@@ -140,6 +140,8 @@ CodeBehind="Registro.aspx.cs" Inherits="AulaVirtual.Presentacion.Registro" %>
                                                     
             <br />
                                                     
+            <br />
+                                                    
         </tr>
         <tr>
         <td colspan="2" class="titulo">Acceso al sistema.</td>

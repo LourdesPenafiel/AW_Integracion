@@ -3,3 +3,8 @@ C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleado
 C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.dll
 C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.pdb
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AulaVirtual\PryDesempeñoEmpleados\bin\PryDesempeñoEmpleados.dll
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AulaVirtual\PryDesempeñoEmpleados\bin\PryDesempeñoEmpleados.pdb
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AulaVirtual\PryDesempeñoEmpleados\obj\Debug\AulaVirtual.csprojResolveAssemblyReference.cache
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AulaVirtual\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.dll
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AulaVirtual\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.pdb

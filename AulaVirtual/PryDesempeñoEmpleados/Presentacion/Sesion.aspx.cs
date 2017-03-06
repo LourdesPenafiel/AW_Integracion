@@ -13,9 +13,9 @@ namespace AulaVirtual.Presentacion
 {
     public partial class Sesion : System.Web.UI.Page
     {
-        Ng_ClsUsuario ngEmpleado = new Ng_ClsUsuario();
-        static Cm_ClsUsuario cmempleado = new Cm_ClsUsuario();
-        static Cm_ClsUsuario cmemplSesion = new Cm_ClsUsuario();
+        Ng_ClsUsuario ngUsuario = new Ng_ClsUsuario();
+        static Cm_ClsUsuario cmUsuario = new Cm_ClsUsuario();
+        static Cm_ClsUsuario cmUsuarioSesion = new Cm_ClsUsuario();
 
         string script = "";
         static bool salirSesion;
@@ -23,65 +23,47 @@ namespace AulaVirtual.Presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             actualizar.Visible = false;
-            baja.Visible = false;
             panelinfo.Visible = false;
             if (!salirSesion)
-                cmemplSesion = (Cm_ClsUsuario)(Session["Empleado"]);
+                cmUsuarioSesion = (Cm_ClsUsuario)(Session["Empleado"]);
 
             if (!IsPostBack)
             {
-
                 ocultarDdls(false);
                 salirSesion = false;
 
-                if (cmemplSesion != null)
+                if (cmUsuarioSesion != null)
                 {
                     this.panelinfo.Visible = true;
                     panelsesion.Visible = false;
-                    mostrarDatos(cmemplSesion);
-                   
-                    if (cmemplSesion.Rol.Equals("Profesor"))
+                    mostrarDatos(cmUsuarioSesion);
+                    if (cmUsuarioSesion.Rol.Equals("Profesor"))
                     {
-                        
+                        lbl1.Text = "Bienvenido Profesor";
                     }
                     else
                     {
-                        
+                        lbl1.Text = "Bienvenido Otro";
                     }
                 }
             }
         }
 
-        private void mostrarDatos(Cm_ClsUsuario cmempleado)
+        private void mostrarDatos(Cm_ClsUsuario cmUsuario)
         {
-           
-            this.txtNombre.Text = cmempleado.Nombre;
-            this.txtApellido.Text = cmempleado.Rol;
-            img1.ImageUrl = "http://localhost:51731/Presentacion/imagen.aspx?ID=" + Convert.ToString(cmempleado.IdUsuario);           
+            this.txtNombre.Text = cmUsuario.Nombre;
+            this.txtApellido.Text = cmUsuario.Rol;
+            this.usuario.Text=cmUsuario.Rol+" "+cmUsuario.Nombre;
+            img1.ImageUrl = "http://localhost:51731/Presentacion/imagen.aspx?ID=" + Convert.ToString(cmUsuario.IdUsuario);           
         }
 
       
         protected void btnentrar_Click(object sender, ImageClickEventArgs e)
         {
-            cmempleado = ngEmpleado.RecuperarSesion(this.txtusuario.Text, this.txtpass.Text);
             
-            if (cmempleado.IdUsuario > 0)
-            {
-                if (cmempleado.Rol.Equals("Administrador"))
-                {
-                                        
-                }
-                else
-                {
-                    
-                }
-                mostrarDatos(cmempleado);
-                Session.Add("Empleado", cmempleado);
-               
-                panelinfo.Visible = true;
-                panelsesion.Visible = false;
-            }
            
+
+
         }
         public void mostrarMensaje(string mensaje)
         {
@@ -98,68 +80,29 @@ namespace AulaVirtual.Presentacion
             if (this.chek.Checked == true)
             {
                 actualizar.Visible = true;
-                baja.Visible = true;
                 FileUpload1.Visible = true;
-                txtInstruccion.Visible = false;
-                txtTelefono.Enabled = true;
-                txtDescripcion.Enabled = true;
-                txtCargo.Visible = false;
-                txtUnidad.Visible = false;
-                ddlInstruccion.Visible = true;
-                ddlCargo.Visible = true;
-                ddlUnidad.Visible = true;
                 this.panelinfo.Visible = true;
             }
             else
             {
-                txtCargo.Visible = true;
-                txtUnidad.Visible = true;
-                txtInstruccion.Visible = true;
                 FileUpload1.Visible = false;
                 chek.Visible = true;
                 actualizar.Visible = false;
-                baja.Visible = false;
-                ddlCargo.Visible = false;
-                ddlUnidad.Visible = false;
-                ddlInstruccion.Visible = false;
-                txtTelefono.Enabled = false;
-                txtDescripcion.Enabled = false;
                 this.panelinfo.Visible = true;
             }
         }
         
         public void ocultarDdls(bool estado)
         {
-            ddlInstruccion.Visible = estado;
-            ddlCargo.Visible = estado;
-            ddlUnidad.Visible = estado;
             txtNombre.Enabled = estado;
             txtApellido.Enabled = estado;
-            txtFechaNaci.Enabled = estado;
-            txtInstruccion.Enabled = estado;
-            txtTelefono.Enabled = estado;
-            txtDescripcion.Enabled = estado;
-            txtCargo.Enabled = estado;
-            txtUnidad.Enabled = estado;
             FileUpload1.Visible = estado;
             actualizar.Visible = estado;
-            baja.Visible = estado;
             chek.Visible = true;
         }
         private void Ver()
         {
             this.chek.Checked = false;
-            txtCargo.Visible = true;
-            txtDescripcion.Enabled = false;
-            txtTelefono.Enabled = true;
-            txtUnidad.Visible = true;
-            txtInstruccion.Enabled = false;
-            txtInstruccion.Visible = true;
-            ddlCargo.Visible = false;
-            ddlUnidad.Visible = false;
-            ddlInstruccion.Visible = false;
-            txtTelefono.Enabled = false;
-            txtDescripcion.Enabled = false;
             panelinfo.Visible = true;
         }
 #endregion
@@ -170,31 +113,21 @@ namespace AulaVirtual.Presentacion
                 HttpPostedFile archivoImagen = FileUpload1.PostedFile;
                 Byte[] byteImage = new Byte[FileUpload1.PostedFile.ContentLength];
                 archivoImagen.InputStream.Read(byteImage, 0, FileUpload1.PostedFile.ContentLength);
-               /* if (ngEmpleado.ActualizarEmpleado(Convert.ToInt16(txtidEmpleado.Text),this.txtNombre.Text,txtApellido.Text,Convert.ToDateTime(txtFechaNaci.Text) ,
+               /* if (ngUsuario.ActualizarEmpleado(Convert.ToInt16(txtidEmpleado.Text),this.txtNombre.Text,txtApellido.Text,Convert.ToDateTime(txtFechaNaci.Text) ,
                     ddlInstruccion.SelectedItem.ToString(), txtTelefono.Text, txtDescripcion.Text, Convert.ToInt16(ddlCargo.SelectedValue),
                     Convert.ToInt16(ddlUnidad.SelectedValue),"Activo", byteImage,txtusuario.Text,txtpass.Text) > 0)
                 {
                     mostrarMensaje("Actualizacion ejecutada.!!!");
                     FileUpload1.Visible = false;
-                    cmempleado = ngEmpleado.RecuperarSesion(cmempleado.Usuario, cmempleado.Contraseña, "Activo");
-                    mostrarDatos(cmempleado);
+                    cmUsuario = ngUsuario.RecuperarSesion(cmUsuario.Usuario, cmUsuario.Contraseña, "Activo");
+                    mostrarDatos(cmUsuario);
                     this.panelinfo.Visible = true;
                     Ver();                    
                 }*/
             }
         }
 
-        protected void ddlUnidad0_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void registraractividad_Click(object sender, ImageClickEventArgs e)
-        {
-            Session.Add("Empleado", cmempleado);
-            Server.Transfer("Actividades.aspx");
-        }
-
+        
         protected void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
@@ -203,46 +136,34 @@ namespace AulaVirtual.Presentacion
         protected void cerrarSesion_Click(object sender, ImageClickEventArgs e)
         {
             salirSesion = true;
-            cmemplSesion = null;
+            cmUsuarioSesion = null;
             panelinfo.Visible = false;
             panelsesion.Visible = true;
             txtpass.Text = null;
             txtusuario.Text = null;
         }
 
-        protected void Administracion_Click(object sender, ImageClickEventArgs e)
-        {
-            Server.Transfer("Administrador.aspx");
-        }
 
-        protected void empleados_Click(object sender, ImageClickEventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            Server.Transfer("EmpleadosNota.aspx");
-            Session.Add("Empleado", cmempleado);
-        }
+            cmUsuario = ngUsuario.RecuperarSesion(this.txtusuario.Text, this.txtpass.Text);
 
-        protected void nota_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void baja_Click(object sender, ImageClickEventArgs e)
-        {
-            
-                
-              /*  if (ngEmpleado.ActualizarEmpleado(Convert.ToInt16(txtidEmpleado.Text), this.txtNombre.Text, txtApellido.Text, Convert.ToDateTime(txtFechaNaci.Text),
-                    ddlInstruccion.SelectedItem.ToString(), txtTelefono.Text, txtDescripcion.Text, Convert.ToInt16(ddlCargo.SelectedValue),
-                    Convert.ToInt16(ddlUnidad.SelectedValue), "Inactivo", cmempleado.Fotografia, txtusuario.Text, txtpass.Text) > 0)
+            if (cmUsuario.IdUsuario > 0)
+            {
+                if (cmUsuario.Rol.Equals("Administrador"))
                 {
-                    mostrarMensaje("Empleado dado de baja.!!!");
-                    salirSesion = true;
-                    cmemplSesion = null;
-                    panelinfo.Visible = false;
-                    panelsesion.Visible = true;
-                    txtpass.Text = null;
-                    txtusuario.Text = null;
-                }*/
-            
+
+                }
+                else
+                {
+
+                }
+                mostrarDatos(cmUsuario);
+                Session.Add("Empleado", cmUsuario);
+
+                panelinfo.Visible = true;
+                panelsesion.Visible = false;
+            }
         }
 
        
