@@ -1,0 +1,5 @@
+C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\bin\PryDesempeñoEmpleados.dll
+C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\bin\PryDesempeñoEmpleados.pdb
+C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.dll
+C:\Users\FredySanchez\Desktop\PryDesempeñoEmpleados_Final\PryDesempeñoEmpleados\obj\Debug\PryDesempeñoEmpleados.pdb
