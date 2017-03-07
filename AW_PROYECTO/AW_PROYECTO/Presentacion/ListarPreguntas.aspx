@@ -21,6 +21,7 @@
             ID="ddlPreguntasMaterias" runat="server" DataSourceID="ConsultaPreguntas" 
             DataTextField="pregunta" DataValueField="id" 
             ontextchanged="ddlPreguntasMaterias_TextChanged">
+            <asp:ListItem>SELECCIONAR</asp:ListItem>
         </asp:DropDownList>
         <asp:SqlDataSource ID="ConsultaPreguntas" runat="server" 
             ConnectionString="<%$ ConnectionStrings:Conn %>" 

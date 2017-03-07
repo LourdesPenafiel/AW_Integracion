@@ -86,48 +86,10 @@ namespace AW_PROYECTO.Datos
 
             DbParameter parametro1 = dpf.CreateParameter();
             parametro1.Value = id_opciones_respuesta;
-            parametro1.ParameterName = "id_opciones_respuesta";
+            parametro1.ParameterName = "id_pregunta";
             parametros.Add(parametro1);
 
-            return ejecuteNonQuery("registroRespuestas", parametros);
-        }
-
-        /*Consultar Preguntas por id*/
-
-        public Cm_ClsPreguntas consultarPreguntasID(int id)
-        {
-            Cm_ClsPreguntas materias = new Cm_ClsPreguntas();
-            String storeProcedure = "preguntaRespuesta";
-
-
-            using (DbConnection con = dpf.CreateConnection())
-            {
-                con.ConnectionString = constr;
-                using (DbCommand cmd = dpf.CreateCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = storeProcedure;
-
-                    DbParameter param = dpf.CreateParameter();
-                    param.DbType = DbType.Int32;
-                    param.Value = id;
-                    param.ParameterName = "id";
-
-                    cmd.Parameters.Add(param);
-                    con.Open();
-
-                    using (DbDataReader dr = cmd.ExecuteReader())
-                    { // leemos la consulta
-
-                        if (dr.Read())
-                        {
-                            materias = new Cm_ClsPreguntas((int)dr["id"],(string)dr["respuesta"]);
-                        }
-                    }
-                }
-            }
-            return materias;
+            return ejecuteNonQuery("registroRespuesta", parametros);
         }
 
     }

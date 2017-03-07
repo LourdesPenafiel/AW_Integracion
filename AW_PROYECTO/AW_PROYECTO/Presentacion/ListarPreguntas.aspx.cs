@@ -29,7 +29,8 @@ namespace AW_PROYECTO.Presentacion
                 txtOpcion1.Enabled = false;
                 txtOpcion2.Enabled = false;
                 txtOpcion3.Enabled = false;
-
+               
+                
             }
 
         }
@@ -88,16 +89,34 @@ namespace AW_PROYECTO.Presentacion
             int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
             mostrar(seleccionarPregunta);
+         
         }
 
         protected void Btn_Responder_Click1(object sender, EventArgs e)
         {
-            //Cm_ClsRespuestaUsuario nuevaRespuesta = new Cm_ClsRespuestaUsuario(1, Convert.ToInt16(RadioButtonList1.SelectedValue));
-            //Ng_ClsRespuestaUsuario ng_respuesta = new Ng_ClsRespuestaUsuario();
+            Cm_ClsRespuestaUsuario nuevaRespuesta = new Cm_ClsRespuestaUsuario(1, Convert.ToInt16(ddlPreguntasMaterias.SelectedValue));
+            Ng_ClsRespuestaUsuario ng_respuesta = new Ng_ClsRespuestaUsuario();
+
+            int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
+            int borrar = Convert.ToInt16(ddlPreguntasMaterias.SelectedIndex);
+
+
+            if ((ng_respuesta.registroRespuestas(nuevaRespuesta) > 0))
+            {
+                ddlPreguntasMaterias.Items.RemoveAt(borrar);
+                ddlPreguntasMaterias.SelectedIndex = 0;
+                opcion1.Checked = false;
+                opcion2.Checked = false;
+                opcion3.Checked = false;
+                txtOpcion1.Text = null;
+                txtOpcion2.Text = null;
+                txtOpcion3.Text = null; 
+                
+            }   
 
             Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
 
-            int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
+            
 
 
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
@@ -139,6 +158,8 @@ namespace AW_PROYECTO.Presentacion
             }
             return respuestaG;
         }
+
+
 
     }
 }

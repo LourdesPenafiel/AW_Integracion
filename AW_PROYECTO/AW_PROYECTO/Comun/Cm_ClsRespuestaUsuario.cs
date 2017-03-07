@@ -10,7 +10,7 @@ namespace AW_PROYECTO.Comun
         /*VARIABLES*/
         private int id;
         private int id_usuario;
-        private int id_opciones_respuesta;
+        private int id_pregunta;
 
     
         /*GET AND SET*/
@@ -27,10 +27,10 @@ namespace AW_PROYECTO.Comun
             set { id_usuario = value; }
         }
 
-        public int Id_opciones_respuesta
+        public int Id_pregunta
         {
-            get { return id_opciones_respuesta; }
-            set { id_opciones_respuesta = value; }
+            get { return id_pregunta; }
+            set { id_pregunta = value; }
         }
 
         /*Constructor Vacio*/
@@ -41,17 +41,17 @@ namespace AW_PROYECTO.Comun
 
         }
 
-        public Cm_ClsRespuestaUsuario(int id_usuario, int id_opciones_respuesta)
+        public Cm_ClsRespuestaUsuario(int id_usuario, int id_pregunta)
         {
             this.id_usuario = id_usuario;
-            this.id_opciones_respuesta = id_opciones_respuesta;
+            this.id_pregunta = id_pregunta;
         }
 
-        public Cm_ClsRespuestaUsuario(int id, int id_usuario, int id_opciones_respuesta)
+        public Cm_ClsRespuestaUsuario(int id, int id_usuario, int id_pregunta)
         {
             this.id = id;
             this.id_usuario = id_usuario;
-            this.id_opciones_respuesta = id_opciones_respuesta;
+            this.id_pregunta = id_pregunta;
         }
 
 
