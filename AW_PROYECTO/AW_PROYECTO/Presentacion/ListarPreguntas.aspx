@@ -21,7 +21,6 @@
             ID="ddlPreguntasMaterias" runat="server" DataSourceID="ConsultaPreguntas" 
             DataTextField="pregunta" DataValueField="id" 
             ontextchanged="ddlPreguntasMaterias_TextChanged">
-            <asp:ListItem>SELECCIONAR</asp:ListItem>
         </asp:DropDownList>
         <asp:SqlDataSource ID="ConsultaPreguntas" runat="server" 
             ConnectionString="<%$ ConnectionStrings:Conn %>" 
@@ -48,6 +47,15 @@
     </div>
     <asp:Button ID="Btn_Responder" runat="server" onclick="Btn_Responder_Click1" 
         Text="Responder" />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Nota Total"></asp:Label>
+    <asp:TextBox ID="txtSumaNota" runat="server" Height="26px" Width="33px"></asp:TextBox>
+    <asp:Label ID="Label3" runat="server" Text="/"></asp:Label>
+    <asp:TextBox ID="txtNota" runat="server" Height="22px" ReadOnly="True" 
+        Width="43px"></asp:TextBox>
+    <br />
+    <br />
+    <br />
     </form>
 </body>
 </html>

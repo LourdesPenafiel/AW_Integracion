@@ -14,6 +14,8 @@ namespace AW_PROYECTO.Presentacion
     public partial class ListarPreguntas : System.Web.UI.Page
     {
         string respuestaG;
+        int totalPreguntasMateria;
+        static int sumaAciertos = 0;
         List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
         List<Cm_ClsPreguntas> preguntas = new List<Cm_ClsPreguntas>();
         
@@ -29,7 +31,6 @@ namespace AW_PROYECTO.Presentacion
                 txtOpcion1.Enabled = false;
                 txtOpcion2.Enabled = false;
                 txtOpcion3.Enabled = false;
-               
                 
             }
 
@@ -49,7 +50,8 @@ namespace AW_PROYECTO.Presentacion
             ddlMaterias.DataValueField = "id";
             ddlMaterias.DataTextField = "nombre";/*Esto hace que el nombre del getter & setter tome el nombre en el gv*/
             ddlMaterias.DataBind();
-            ddlMaterias.Items.Insert(0, new ListItem("--SELECT--", "0")); 
+            ddlMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
+           
             
         }
 
@@ -89,6 +91,11 @@ namespace AW_PROYECTO.Presentacion
             int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
             mostrar(seleccionarPregunta);
+            ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
+            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count) -1 ;
+            txtNota.Text = totalPreguntasMateria.ToString();
+            
+
          
         }
 
@@ -105,12 +112,8 @@ namespace AW_PROYECTO.Presentacion
             {
                 ddlPreguntasMaterias.Items.RemoveAt(borrar);
                 ddlPreguntasMaterias.SelectedIndex = 0;
-                opcion1.Checked = false;
-                opcion2.Checked = false;
-                opcion3.Checked = false;
-                txtOpcion1.Text = null;
-                txtOpcion2.Text = null;
-                txtOpcion3.Text = null; 
+
+               
                 
             }   
 
@@ -126,13 +129,23 @@ namespace AW_PROYECTO.Presentacion
 
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "alert('Respuesta Correcta');", true);
+                opcion1.Checked = false;
+                opcion2.Checked = false;
+                opcion3.Checked = false;
+                txtOpcion1.Text = null;
+                txtOpcion2.Text = null;
+                txtOpcion3.Text = null;
+                sumaAciertos = sumaAciertos + 1;
 
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "alert('Respuesta Incorrecta');", true);
+               
 
             }
+
+            txtSumaNota.Text = sumaAciertos.ToString();
 
         }
 
@@ -141,20 +154,21 @@ namespace AW_PROYECTO.Presentacion
             if (opcion1.Checked)
             {
 
-                respuesta = "opcion1";
-                respuestaG = txtOpcion1.Text;
+                respuesta = txtOpcion1.Text;
+                respuestaG = respuesta;
+                
             }
 
             if (opcion2.Checked)
             {
-                respuesta = "opcion2";
-                respuestaG = txtOpcion2.Text;
+                respuesta = txtOpcion2.Text;
+                respuestaG = respuesta;
             }
 
             if (opcion3.Checked)
             {
-                respuesta = "opcion3";
-                respuestaG = txtOpcion3.Text;
+                respuesta = txtOpcion3.Text;
+                respuestaG = respuesta;
             }
             return respuestaG;
         }
