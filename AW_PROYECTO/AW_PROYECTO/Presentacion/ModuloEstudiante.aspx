@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ModuloProfesor.aspx.cs" Inherits="AW_PROYECTO.Presentacion.ModuloProfesor" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ModuloEstudiante.aspx.cs" Inherits="AW_PROYECTO.Presentacion.ModuloEstudiante" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>MODULO PROFESORES</title>
+    <title>MODULO ESTUDIANTE</title>
      <style type="text/css">
 
 *{
@@ -61,7 +61,7 @@
                 <td class="style30">
                     &nbsp;</td>
                 <td class="frase" colspan="2">
-                    MODULO PROFESORES</td>
+                    MODULO ESTUDIANTES</td>
                 <td>
                 </td>
                 <td width="40px">
@@ -109,7 +109,7 @@
                 </td>
                 <td>
                     <asp:Button ID="Btn_Usuarios" runat="server" class="btn btn-default" 
-                        onclick="Btn_Usuarios_Click" Text="Registrar preguntas" Height="25px" 
+                        onclick="Btn_Usuarios_Click" Text="Resolver cuestionario" Height="25px" 
                         Width="100%" />
                 </td>
                 <td width="40px">
@@ -184,3 +184,4 @@
     </form>
 </body>
 </html>
+

@@ -17,7 +17,6 @@ namespace AW_PROYECTO.Comun
         private int calificacion;
         private int id_materia;
         private int id_usuario;
-        //private int id_pregunta;
 
 
         /*GET AND SET */
@@ -81,7 +80,7 @@ namespace AW_PROYECTO.Comun
         //    set { id_pregunta = value; }
         //}
 
-       /*Constructor Vacio */
+        /*Constructor Vacio */
 
         public Cm_ClsPreguntas()
         {
@@ -100,7 +99,6 @@ namespace AW_PROYECTO.Comun
             this.calificacion = calificacion;
             this.id_materia = id_materia;
             this.id_usuario = id_usuario;
-           // this.id_pregunta = id_pregunta;
         }
 
         public Cm_ClsPreguntas(int id, string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario)
@@ -113,17 +111,13 @@ namespace AW_PROYECTO.Comun
             this.respuesta = respuesta;
             this.calificacion = calificacion;
             this.id_materia = id_materia;
-            this.id_usuario = id_usuario;;
-           // this.id_pregunta = id_pregunta;
+            this.id_usuario = id_usuario; ;
         }
 
-        //public Cm_ClsPreguntas(int id_materia, string pregunta)
-        //{
-        //    this.id_materia = id_materia;
-        //    this.pregunta = pregunta;
-        //}
 
-        public Cm_ClsPreguntas(int id, string respuesta) {
+
+        public Cm_ClsPreguntas(int id, string respuesta)
+        {
 
             this.id = id;
             this.respuesta = respuesta;

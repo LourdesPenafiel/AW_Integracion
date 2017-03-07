@@ -14,17 +14,11 @@ namespace AW_PROYECTO.Presentacion
 {
     public partial class Materias : System.Web.UI.Page
     {
-        
-        List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                cargarGrid();
-                cargarDropDownList();
-                ddlMaterias.AutoPostBack = true;
-            }
+           
         }
 
         protected void Btn_Registrar_Click(object sender, EventArgs e)
@@ -35,40 +29,15 @@ namespace AW_PROYECTO.Presentacion
 
             if ((ng_materias.crearMaterias(nuevoMateria) > 0))
             {
-                limpiarCampos();
-                cargarGrid();
-            }    
+                limpiarCampos(); Response.Redirect("/Presentacion/Materias.aspx");
+            }
         }
 
-        private void cargarGrid()
-        {
-            consultar();
-            Ng_ClsMaterias ng_materias = new Ng_ClsMaterias();
-            gvrMaterias.DataSource = ng_materias.listarMaterias();
-            gvrMaterias.DataBind();
-        }
-
-        public void consultar()
-        {
-            Ng_ClsMaterias ng_materias = new Ng_ClsMaterias();
-            materias = ng_materias.listarMaterias();
-
-        }
-        private void limpiarCampos()
+        
+private void limpiarCampos()
         {
             txtNombre.Text = "";
 
-        }
-
-        private void cargarDropDownList()
-        {
-            consultar();
-
-            ddlMaterias.DataSource = materias;
-            ddlMaterias.DataValueField = "id";
-            ddlMaterias.DataTextField = "nombre";/*Esto hace que el nombre del getter & setter tome el nombre en el gv*/
-            ddlMaterias.DataBind();
-            ddlMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
         }
 
         protected void ddlMaterias_TextChanged(object sender, EventArgs e)
@@ -93,9 +62,13 @@ namespace AW_PROYECTO.Presentacion
             if ((ng_materias.modificarMaterias(modificarMaterias) > 0))
             {
                 limpiarCampos();
-                cargarGrid();
-                cargarDropDownList();
+                Response.Redirect("/Presentacion/Materias.aspx");
             }
+        }
+
+        protected void txtnombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

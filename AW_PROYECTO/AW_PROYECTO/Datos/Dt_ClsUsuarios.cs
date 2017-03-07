@@ -76,24 +76,39 @@ namespace AW_PROYECTO.Datos
 
 
         /*Crear Usuarios*/
-        public int crearUsuarios(string usuario, string contrasena, string tipo_usuario)
+        public int crearUsuarios(string nombre, string apellido, Byte[] foto, string usuario, string contrasena, string tipo_usuario)
         {
             List<DbParameter> parametros = new List<DbParameter>();
 
             DbParameter parametro0 = dpf.CreateParameter();
             parametro0.Value = usuario;
-            parametro0.ParameterName = "usuario";
+            parametro0.ParameterName = "@usuario";
             parametros.Add(parametro0);
 
             DbParameter parametro1 = dpf.CreateParameter();
             parametro1.Value = contrasena;
-            parametro1.ParameterName = "contrasena";
+            parametro1.ParameterName = "@contrasena";
             parametros.Add(parametro1);
 
             DbParameter parametro2 = dpf.CreateParameter();
             parametro2.Value = tipo_usuario;
-            parametro2.ParameterName = "tipo_usuario";
+            parametro2.ParameterName = "@tipo_usuario";
             parametros.Add(parametro2);
+
+            DbParameter parametro3 = dpf.CreateParameter();
+            parametro3.Value = nombre;
+            parametro3.ParameterName = "@nombre";
+            parametros.Add(parametro3);
+
+            DbParameter parametro4 = dpf.CreateParameter();
+            parametro4.Value = apellido;
+            parametro4.ParameterName = "@apellido";
+            parametros.Add(parametro4);
+
+            DbParameter parametro5 = dpf.CreateParameter();
+            parametro5.Value = foto;
+            parametro5.ParameterName = "@foto";
+            parametros.Add(parametro5);
 
             return ejecuteNonQuery("crearUsuario", parametros);
         }
@@ -118,7 +133,10 @@ namespace AW_PROYECTO.Datos
                     {
                         while (dr.Read())
                         {
-                            usuarios.Add(new Cm_ClsUsuarios((int)dr["id"],(string)dr["usuario"], (string)dr["contrasena"], (string)dr["tipo_usuario"]));
+                            usuarios.Add(
+                                new Cm_ClsUsuarios(
+                                    (int)dr["id"], (string)dr["nombre"], (string)dr["apellido"],
+                                    (Byte[])dr["foto"], (string)dr["usuario"], (string)dr["contrasena"], (string)dr["tipo_usuario"]));
                         }
                     }
 
@@ -130,30 +148,44 @@ namespace AW_PROYECTO.Datos
 
         /*Modificar Usuarios*/
 
-        public int modificarUsuarios(int id, string usuario, string contrasena, string tipo_usuario)
+        public int modificarUsuarios(int id, string nombre, string apellido, Byte[] foto, string usuario, string contrasena, string tipo_usuario)
         {
             List<DbParameter> parametros = new List<DbParameter>();
 
             DbParameter parametro0 = dpf.CreateParameter();
-            parametro0.ParameterName = "id";
+            parametro0.ParameterName = "@id";
             parametro0.Value = id;
             parametros.Add(parametro0);
 
             DbParameter parametro1 = dpf.CreateParameter();
-            parametro1.ParameterName = "usuario";
+            parametro1.ParameterName = "@usuario";
             parametro1.Value = usuario;
             parametros.Add(parametro1);
 
             DbParameter parametro2 = dpf.CreateParameter();
-            parametro2.ParameterName = "contrasena";
+            parametro2.ParameterName = "@contrasena";
             parametro2.Value = contrasena;
             parametros.Add(parametro2);
 
             DbParameter parametro3 = dpf.CreateParameter();
-            parametro3.ParameterName = "tipo_usuario";
+            parametro3.ParameterName = "@tipo_usuario";
             parametro3.Value = tipo_usuario;
             parametros.Add(parametro3);
 
+            DbParameter parametro6 = dpf.CreateParameter();
+            parametro6.Value = nombre;
+            parametro6.ParameterName = "@nombre";
+            parametros.Add(parametro6);
+
+            DbParameter parametro4 = dpf.CreateParameter();
+            parametro4.Value = apellido;
+            parametro4.ParameterName = "@apellido";
+            parametros.Add(parametro4);
+
+            DbParameter parametro5 = dpf.CreateParameter();
+            parametro5.Value = foto;
+            parametro5.ParameterName = "@foto";
+            parametros.Add(parametro5);
             return ejecuteNonQuery("modificarUsuarios", parametros);
         }
 
@@ -177,7 +209,7 @@ namespace AW_PROYECTO.Datos
                     DbParameter param = dpf.CreateParameter();
                     param.DbType = DbType.Int32;
                     param.Value = id;
-                    param.ParameterName ="id";
+                    param.ParameterName ="@id";
 
                     cmd.Parameters.Add(param);
                     con.Open();
@@ -187,7 +219,9 @@ namespace AW_PROYECTO.Datos
 
                         if (dr.Read())
                         {
-                            usuarios = new Cm_ClsUsuarios((string)dr["usuario"], (string)dr["contrasena"], (string)dr["tipo_usuario"]);
+                            usuarios = new Cm_ClsUsuarios(
+                               (string)dr["nombre"], (string)dr["apellido"],
+                                    (Byte[])dr["foto"], (string)dr["usuario"], (string)dr["contrasena"], (string)dr["tipo_usuario"]);
                         }
                     }
                 }
@@ -198,32 +232,29 @@ namespace AW_PROYECTO.Datos
         public Cm_ClsUsuarios loginUser(string usuario, string contrasena)
         {
             Cm_ClsUsuarios usuarios = new Cm_ClsUsuarios();
-            String storeProcedure = "loginUser";
-
-
+            String storeProcedure = "LoginUser";
+            
             using (DbConnection con = dpf.CreateConnection())
             {
                 con.ConnectionString = constr;
                 using (DbCommand cmd = dpf.CreateCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = storeProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     DbParameter param = cmd.CreateParameter();
                     param.DbType = DbType.String;
-                    param.ParameterName = "usuario";
+                    param.ParameterName = "@usuario";
                     param.Value = usuario;
                     cmd.Parameters.Add(param);
 
                     DbParameter param1 = cmd.CreateParameter();
                     param1.DbType = DbType.String;
-                    param1.ParameterName = "contrasena";
+                    param1.ParameterName = "@contrasena";
                     param1.Value = contrasena;
                     cmd.Parameters.Add(param1);
 
-
-                   // cmd.Parameters.Add(param);
                     con.Open();
 
                     using (DbDataReader dr = cmd.ExecuteReader())
@@ -231,7 +262,14 @@ namespace AW_PROYECTO.Datos
 
                         if (dr.Read())
                         {
-                            usuarios = new Cm_ClsUsuarios((int)dr["id"], (string)dr["usuario"], (string)dr["contrasena"], (string)dr["tipo_usuario"]);
+                            usuarios = new Cm_ClsUsuarios(
+                                (int)dr["id"], 
+                                (string)dr["nombre"], 
+                                (string)dr["apellido"],
+                                (Byte[])dr["foto"], 
+                                (string)dr["usuario"], 
+                                (string)dr["contrasena"], 
+                                (string)dr["tipo_usuario"]);
                         }
                     }
                 }

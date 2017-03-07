@@ -82,7 +82,7 @@ namespace AW_PROYECTO.Datos
 
             DbParameter parametro0 = dpf.CreateParameter();
             parametro0.Value = nombre;
-            parametro0.ParameterName = "nombre";
+            parametro0.ParameterName = "@nombre";
             parametros.Add(parametro0);
 
             return ejecuteNonQuery("crearMateria", parametros);
@@ -130,7 +130,7 @@ namespace AW_PROYECTO.Datos
             parametros.Add(parametro0);
 
             DbParameter parametro1 = dpf.CreateParameter();
-            parametro1.ParameterName = "nombre";
+            parametro1.ParameterName = "@nombre";
             parametro1.Value = nombre;
             parametros.Add(parametro1);
 

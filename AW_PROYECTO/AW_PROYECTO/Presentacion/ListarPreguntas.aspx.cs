@@ -18,7 +18,7 @@ namespace AW_PROYECTO.Presentacion
         static int sumaAciertos = 0;
         List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
         List<Cm_ClsPreguntas> preguntas = new List<Cm_ClsPreguntas>();
-        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace AW_PROYECTO.Presentacion
                 txtOpcion1.Enabled = false;
                 txtOpcion2.Enabled = false;
                 txtOpcion3.Enabled = false;
-                
+
             }
 
         }
@@ -45,14 +45,14 @@ namespace AW_PROYECTO.Presentacion
 
         private void cargarDropDownListMaterias()
         {
-           consultarMaterias();
+            consultarMaterias();
             ddlMaterias.DataSource = materias;
             ddlMaterias.DataValueField = "id";
             ddlMaterias.DataTextField = "nombre";/*Esto hace que el nombre del getter & setter tome el nombre en el gv*/
             ddlMaterias.DataBind();
             ddlMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
-           
-            
+
+
         }
 
         public void mostrar(Cm_ClsPreguntas opciones)
@@ -71,17 +71,17 @@ namespace AW_PROYECTO.Presentacion
         //    ddlPreguntasMaterias.DataTextField = "pregunta";/*Esto hace que el nombre del getter & setter tome el nombre en el gv*/
         //    ddlPreguntasMaterias.DataBind();
         //    ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
-            
+
         //}
         //public void consultarPreguntas()
         //{
         //    int indice = Convert.ToInt16(ddlMaterias.SelectedValue);
         //    Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
         //    preguntas = ng_preguntas.consultarPreguntasID_Materia(indice);
-            
+
         //}
 
-    
+
 
 
         protected void ddlPreguntasMaterias_TextChanged(object sender, EventArgs e)
@@ -92,11 +92,11 @@ namespace AW_PROYECTO.Presentacion
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
             mostrar(seleccionarPregunta);
             ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
-            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count) -1 ;
+            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count) - 1;
             txtNota.Text = totalPreguntasMateria.ToString();
-            
 
-         
+
+
         }
 
         protected void Btn_Responder_Click1(object sender, EventArgs e)
@@ -113,13 +113,13 @@ namespace AW_PROYECTO.Presentacion
                 ddlPreguntasMaterias.Items.RemoveAt(borrar);
                 ddlPreguntasMaterias.SelectedIndex = 0;
 
-               
-                
-            }   
+
+
+            }
 
             Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
 
-            
+
 
 
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
@@ -141,7 +141,7 @@ namespace AW_PROYECTO.Presentacion
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "alert('Respuesta Incorrecta');", true);
-               
+
 
             }
 
@@ -156,7 +156,7 @@ namespace AW_PROYECTO.Presentacion
 
                 respuesta = txtOpcion1.Text;
                 respuestaG = respuesta;
-                
+
             }
 
             if (opcion2.Checked)

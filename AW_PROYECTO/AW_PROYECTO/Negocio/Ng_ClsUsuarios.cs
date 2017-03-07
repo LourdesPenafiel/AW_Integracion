@@ -18,7 +18,7 @@ namespace AW_PROYECTO.Negocio
         public int crearUsuarios(Cm_ClsUsuarios usuarios)
         {
             Dt_ClsUsuarios dt_usuarios = new Dt_ClsUsuarios();
-            return dt_usuarios.crearUsuarios(usuarios.Usuario, usuarios.Contrasena, usuarios.Tipo_usuario);                                                 
+            return dt_usuarios.crearUsuarios(usuarios.Nombre, usuarios.Apellido, usuarios.Foto,usuarios.Usuario, usuarios.Contrasena, usuarios.Tipo_usuario);                                                 
         }
 
         public List<Cm_ClsUsuarios> listarUsuarios()
@@ -30,7 +30,7 @@ namespace AW_PROYECTO.Negocio
         public int modificarUsuarios(Cm_ClsUsuarios usuarios)
         {
             Dt_ClsUsuarios dt_usuarios = new Dt_ClsUsuarios();
-            return dt_usuarios.modificarUsuarios(usuarios.Id, usuarios.Usuario, usuarios.Contrasena, usuarios.Tipo_usuario);
+            return dt_usuarios.modificarUsuarios(usuarios.Id, usuarios.Nombre, usuarios.Apellido, usuarios.Foto, usuarios.Usuario, usuarios.Contrasena, usuarios.Tipo_usuario);
         }
 
         public Cm_ClsUsuarios consultarUsuariosID(int IdUsuarios)

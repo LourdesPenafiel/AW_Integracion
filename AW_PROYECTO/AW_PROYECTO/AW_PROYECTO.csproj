@@ -51,10 +51,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Presentacion\imagen.aspx" />
     <Content Include="Presentacion\inicio.aspx" />
     <Content Include="Presentacion\ListarPreguntas.aspx" />
     <Content Include="Presentacion\Materias.aspx" />
     <Content Include="Presentacion\ModuloAdministrador.aspx" />
+    <Content Include="Presentacion\ModuloEstudiante.aspx" />
     <Content Include="Presentacion\ModuloProfesor.aspx" />
     <Content Include="Presentacion\Preguntas.aspx" />
     <Content Include="Presentacion\Usuarios.aspx" />
@@ -72,13 +74,20 @@
     <Compile Include="Comun\Cm_ClsUsuarios.cs" />
     <Compile Include="Comun\Cm_ClsPreguntas.cs" />
     <Compile Include="Datos\Dt_ClsMaterias.cs" />
-    <Compile Include="Datos\Dt_ClsPreguntas.cs" />
     <Compile Include="Datos\Dt_ClsRespuestaUsuario.cs" />
+    <Compile Include="Datos\Dt_ClsPreguntas.cs" />
     <Compile Include="Datos\Dt_ClsUsuarios.cs" />
-    <Compile Include="Negocio\Ng_ClsPreguntas.cs" />
     <Compile Include="Negocio\Ng_ClsRespuestaUsuario.cs" />
+    <Compile Include="Negocio\Ng_ClsPreguntas.cs" />
     <Compile Include="Negocio\Ng_ClsUsuarios.cs" />
     <Compile Include="Negocio\Ng_ClsMaterias.cs" />
+    <Compile Include="Presentacion\imagen.aspx.cs">
+      <DependentUpon>imagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\imagen.aspx.designer.cs">
+      <DependentUpon>imagen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\inicio.aspx.cs">
       <DependentUpon>inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +115,13 @@
     </Compile>
     <Compile Include="Presentacion\ModuloAdministrador.aspx.designer.cs">
       <DependentUpon>ModuloAdministrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\ModuloEstudiante.aspx.cs">
+      <DependentUpon>ModuloEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ModuloEstudiante.aspx.designer.cs">
+      <DependentUpon>ModuloEstudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\ModuloProfesor.aspx.cs">
       <DependentUpon>ModuloProfesor.aspx</DependentUpon>

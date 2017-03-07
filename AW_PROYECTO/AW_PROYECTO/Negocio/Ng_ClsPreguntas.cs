@@ -19,7 +19,7 @@ namespace AW_PROYECTO.Negocio
         public int crearPreguntas(Cm_ClsPreguntas materias)
         {
             Dt_ClsPreguntas dt_preguntas = new Dt_ClsPreguntas();
-            return dt_preguntas.crearPreguntas(materias.Pregunta, materias.Opcion1, materias.Opcion2, materias.Opcion3, materias.Respuesta, materias.Calificacion, materias.Id_materia, materias.Id_usuario);                                                 
+            return dt_preguntas.crearPreguntas(materias.Pregunta, materias.Opcion1, materias.Opcion2, materias.Opcion3, materias.Respuesta, materias.Calificacion, materias.Id_materia, materias.Id_usuario);
         }
 
         //public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)

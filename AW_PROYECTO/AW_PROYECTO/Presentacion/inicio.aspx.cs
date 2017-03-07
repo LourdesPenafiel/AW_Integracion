@@ -13,46 +13,48 @@ namespace AW_PROYECTO.Presentacion
 {
     public partial class inicio : System.Web.UI.Page
     {
-        Cm_ClsUsuarios usuarios = new Cm_ClsUsuarios();
-
+        Ng_ClsUsuarios ngUsuario = new Ng_ClsUsuarios();
+        static Cm_ClsUsuarios cmUsuario = new Cm_ClsUsuarios();
+        static Cm_ClsUsuarios cmUsuarioSesion = new Cm_ClsUsuarios();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            Administrador.Visible = false;
-
+            cmUsuarioSesion = (Cm_ClsUsuarios)(Session["Usuario"]);
             if (!IsPostBack)
             {
-                cargarDrownList();
-                ddModoUsuario.AutoPostBack = true;
-            }
-            
-           
+                if (cmUsuarioSesion != null)
+                {
+                    if (cmUsuarioSesion.Tipo_usuario.Equals("Administrador"))
+                    {
+                        Response.Redirect("/Presentacion/ModuloAdministrador.aspx");
+                    }
+                    else if (cmUsuarioSesion.Tipo_usuario.Equals("Profesor"))
+                    {
+                        Response.Redirect("/Presentacion/ModuloProfesor.aspx");
+                    }
+                }
+            }  
         }
-
-        private void cargarDrownList() {
-
-            ddModoUsuario.Items.Insert(0, new ListItem("ESTUDIANTE", "3"));
-            ddModoUsuario.Items.Insert(0, new ListItem("PROFESOR", "2"));
-            ddModoUsuario.Items.Insert(0, new ListItem("ADMINISTRADOR", "1"));
-            ddModoUsuario.Items.Insert(0, new ListItem("--SELECT--", "0"));
-        }
-
+      
         protected void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-  //          Ng_ClsUsuarios ng_usuarios = new Ng_ClsUsuarios();
-//            usuarios = ng_usuarios.loginUser(txtUsuario.Text, txtContrasena.Text);
-
-            if (ddModoUsuario.SelectedIndex == 1 && txtUsuario.Text.Equals("Joss") && txtContrasena.Text.Equals("123"))
+            cmUsuario = ngUsuario.loginUser(this.txtUsuario.Text, this.txtContrasena.Text);
+            if (cmUsuario.Tipo_usuario.Equals("Administrador"))
+          {
+              Session.Add("Usuario", cmUsuario);
+              Response.Redirect("/Presentacion/ModuloAdministrador.aspx");
+          }
+            else if (cmUsuario.Tipo_usuario.Equals("Profesor"))
+          {
+              Session.Add("Usuario", cmUsuario);
+              Response.Redirect("/Presentacion/ModuloProfesor.aspx");
+          }
+            else if (cmUsuario.Tipo_usuario.Equals("Estudiante"))
             {
-                Administrador.Visible = true;
-                Response.Redirect("/Presentacion/ModuloAdministrador.aspx");
-
+                Session.Add("Usuario", cmUsuario);
+                Response.Redirect("/Presentacion/ModuloEstudiante.aspx");
             }
-
-            if (ddModoUsuario.SelectedIndex == 2)
-            {
-                Response.Redirect("/Presentacion/ModuloProfesor.aspx");
-
-            }
+            
         }
   
     }

@@ -9,7 +9,7 @@ using AW_PROYECTO.Comun;
 
 namespace AW_PROYECTO.Presentacion
 {
-    public partial class ModuloProfesor : System.Web.UI.Page
+    public partial class ModuloEstudiante : System.Web.UI.Page
     {
 
         static Cm_ClsUsuarios logUsuario = new Cm_ClsUsuarios();
@@ -27,13 +27,14 @@ namespace AW_PROYECTO.Presentacion
                     this.txtApellido.Text = logUsuario.Tipo_usuario;
                     this.img1.ImageUrl = "http://localhost:51188/Presentacion/imagen.aspx?ID=" + Convert.ToString(logUsuario.Id);
                 }
-                else {
+                else
+                {
                     Salir();
                 }
             }
         }
 
-        
+
         private void Salir()
         {
             Session.Abandon();
@@ -42,7 +43,7 @@ namespace AW_PROYECTO.Presentacion
 
         protected void Btn_Usuarios_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Preguntas.aspx");
+            Response.Redirect("/Presentacion/ListarPreguntas.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)

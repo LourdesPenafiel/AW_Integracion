@@ -10,11 +10,20 @@ namespace AW_PROYECTO.Comun
         
         /*VARIABLES*/
         private int id;
+        private string nombre;
+        private string apellido;
         private string usuario;
         private string contrasena;
         private string tipo_usuario;
+        private Byte[] foto;
 
-        /*SET AND GET*/
+        /* SET AND GET*/
+
+        public Byte[] Foto
+        {
+            get { return foto; }
+            set { foto = value; }
+        }
 
         public int Id
         {
@@ -22,6 +31,17 @@ namespace AW_PROYECTO.Comun
             set { id = value; }
         }
 
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string Apellido
+        {
+            get { return apellido; }
+            set { apellido = value; }
+        }
         public string Usuario
         {
             get { return usuario; }
@@ -49,26 +69,30 @@ namespace AW_PROYECTO.Comun
 
         /*Constructor con Parametros para crear usuarios */
 
-        public Cm_ClsUsuarios(string usuario, string contrasena, string tipo_usuario)
+        public Cm_ClsUsuarios(string nombre, string apellido,Byte[] foto, string usuario, string contrasena, string tipo_usuario)
         {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.foto = new Byte[foto.Length];
+            this.foto = foto;
             this.usuario = usuario;
             this.contrasena = contrasena;
             this.tipo_usuario = tipo_usuario;
         }
 
 
-        public Cm_ClsUsuarios(int id, string usuario, string contrasena, string tipo_usuario)
+        public Cm_ClsUsuarios(int id, string nombre, string apellido, Byte[] foto, string usuario, string contrasena, string tipo_usuario)
         {
             this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.foto = new Byte[foto.Length];
+            this.foto = foto;
             this.usuario = usuario;
             this.contrasena = contrasena;
             this.tipo_usuario = tipo_usuario;
 
         }
-
-
-
-
 
     }
 }

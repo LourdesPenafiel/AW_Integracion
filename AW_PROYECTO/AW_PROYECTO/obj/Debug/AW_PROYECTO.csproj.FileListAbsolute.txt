@@ -2,4 +2,7 @@ C:\Users\JOSSELYN-R\documents\visual studio 2010\Projects\AW_PROYECTO\AW_PROYECT
 C:\Users\JOSSELYN-R\documents\visual studio 2010\Projects\AW_PROYECTO\AW_PROYECTO\bin\AW_PROYECTO.pdb
 C:\Users\JOSSELYN-R\documents\visual studio 2010\Projects\AW_PROYECTO\AW_PROYECTO\obj\Debug\AW_PROYECTO.dll
 C:\Users\JOSSELYN-R\documents\visual studio 2010\Projects\AW_PROYECTO\AW_PROYECTO\obj\Debug\AW_PROYECTO.pdb
-C:\Users\JOSSELYN-R\documents\visual studio 2010\Projects\AW_PROYECTO\AW_PROYECTO\obj\Debug\AW_PROYECTO.csprojResolveAssemblyReference.cache
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AW_PROYECTO\AW_PROYECTO\bin\AW_PROYECTO.dll
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AW_PROYECTO\AW_PROYECTO\bin\AW_PROYECTO.pdb
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AW_PROYECTO\AW_PROYECTO\obj\Debug\AW_PROYECTO.dll
+C:\Users\SUPERPAK\Desktop\AW_Integracion\AW_PROYECTO\AW_PROYECTO\obj\Debug\AW_PROYECTO.pdb
