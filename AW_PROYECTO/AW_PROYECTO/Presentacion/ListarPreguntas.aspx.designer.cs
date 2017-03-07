@@ -58,21 +58,66 @@ namespace AW_PROYECTO.Presentacion {
         protected global::System.Web.UI.WebControls.SqlDataSource ConsultaPreguntas;
         
         /// <summary>
-        /// Control ddlRespuestas.
+        /// Control opcion1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRespuestas;
+        protected global::System.Web.UI.WebControls.RadioButton opcion1;
         
         /// <summary>
-        /// Control Respuestas.
+        /// Control txtOpcion1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Respuestas;
+        protected global::System.Web.UI.WebControls.TextBox txtOpcion1;
+        
+        /// <summary>
+        /// Control opcion2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton opcion2;
+        
+        /// <summary>
+        /// Control txtOpcion2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOpcion2;
+        
+        /// <summary>
+        /// Control opcion3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton opcion3;
+        
+        /// <summary>
+        /// Control txtOpcion3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOpcion3;
+        
+        /// <summary>
+        /// Control Btn_Responder.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Responder;
     }
 }

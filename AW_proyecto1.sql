@@ -18,12 +18,16 @@ nombre varchar (25),
 CREATE TABLE PREGUNTAS(
 id int IDENTITY(1,1) primary key, 
 pregunta varchar (100),
+opcion1 varchar (100), 
+opcion2 varchar (100),
+opcion3 varchar (100),
+respuesta varchar (100), 
 calificacion int,
 id_materia int, 
 id_usuario int,
 FOREIGN KEY (id_materia) REFERENCES MATERIAS(id),
 FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id),
-respuesta varchar (100)
+
 )
 
 
@@ -113,19 +117,8 @@ as
 	select nombre from MATERIAS
 	where id = @id
 
-/* CREAR PREGUNTAS */
-CREATE PROCEDURE crearPregunta
-(
-	@pregunta varchar (100),
-	@calificacion int,
-	@id_materia int, 
-	@id_usuario int
-)
-	as
-	insert into PREGUNTAS(pregunta,  calificacion, id_materia, id_usuario)
-	Values (@pregunta, @calificacion, @id_materia, @id_usuario)
 
-
+/*Crear Pregunta*/
 ALTER PROCEDURE crearRespuesta
 (
 	@pregunta varchar (100),
@@ -135,43 +128,43 @@ ALTER PROCEDURE crearRespuesta
 	@respuesta varchar (10),
 	@calificacion int,
 	@id_materia int, 
-	@id_usuario int,
-	@id_pregunta int output
+	@id_usuario int
 )
 
 as 
-
-
-	insert into PREGUNTAS(pregunta,  calificacion, id_materia, id_usuario, respuesta)
-	Values (@pregunta, @calificacion, @id_materia, @id_usuario, @respuesta)
-select @id_pregunta = SCOPE_IDENTITY()
-insert into OPCIONES_RESPUESTA (opcion, id_pregunta)
-values(@opcion1, @id_pregunta),(@opcion2, @id_pregunta), (@opcion3, @id_pregunta)
+	insert into PREGUNTAS(pregunta, opcion1, opcion2, opcion3, respuesta, calificacion, id_materia, id_usuario)
+	Values (@pregunta, @opcion1, @opcion2, @opcion3, @respuesta, @calificacion, @id_materia, @id_usuario)
 
 
 select * from MATERIAS
 select * from USUARIOS
 select * from PREGUNTAS
 select * from OPCIONES_RESPUESTA
+select * from RESPUESTA_USUARIO
 
 DELETE FROM OPCIONES_RESPUESTA
 /*LISTAR PREGUNTAS POR MATERIA */
-ALTER PROCEDURE listarPreguntasID_Materia(
+CREATE PROCEDURE listarPreguntasID_Materia(
 	@id_materia int
 )
 as
 	select pregunta, id_materia from PREGUNTAS
 	where id_materia = @id_materia
+
 exec listarPreguntasID_Materia 1
 
-ALTER PROCEDURE listarPreguntas_ID(
+
+
+CREATE PROCEDURE listarPreguntas_ID(
 	@id int
 )
 as
-	select id ,opcion1, opcion2, opcion3 from PREGUNTAS
+	select * from PREGUNTAS
 	where id = @id
-exec listarPreguntasID_Materia 1
 
+exec listarPreguntas_ID 4
+
+select * from PREGUNTAS
 CREATE PROCEDURE LoginUser(
 	@usuario varchar (25),
 	@contrasena varchar (25)

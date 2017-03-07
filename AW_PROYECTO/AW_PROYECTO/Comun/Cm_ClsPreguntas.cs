@@ -17,7 +17,7 @@ namespace AW_PROYECTO.Comun
         private int calificacion;
         private int id_materia;
         private int id_usuario;
-        private int id_pregunta;
+        //private int id_pregunta;
 
 
         /*GET AND SET */
@@ -75,11 +75,11 @@ namespace AW_PROYECTO.Comun
             set { id_usuario = value; }
         }
 
-        public int Id_pregunta
-        {
-            get { return id_pregunta; }
-            set { id_pregunta = value; }
-        }
+        //public int Id_pregunta
+        //{
+        //    get { return id_pregunta; }
+        //    set { id_pregunta = value; }
+        //}
 
        /*Constructor Vacio */
 
@@ -90,7 +90,7 @@ namespace AW_PROYECTO.Comun
 
         /*Constructor para crear materias */
 
-        public Cm_ClsPreguntas(string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario, int id_pregunta)
+        public Cm_ClsPreguntas(string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario)
         {
             this.pregunta = pregunta;
             this.opcion1 = opcion1;
@@ -100,10 +100,10 @@ namespace AW_PROYECTO.Comun
             this.calificacion = calificacion;
             this.id_materia = id_materia;
             this.id_usuario = id_usuario;
-            this.id_pregunta = id_pregunta;
+           // this.id_pregunta = id_pregunta;
         }
 
-        public Cm_ClsPreguntas(int id, string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario, int id_pregunta)
+        public Cm_ClsPreguntas(int id, string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario)
         {
             this.id = id;
             this.pregunta = pregunta;
@@ -114,13 +114,19 @@ namespace AW_PROYECTO.Comun
             this.calificacion = calificacion;
             this.id_materia = id_materia;
             this.id_usuario = id_usuario;;
-            this.id_pregunta = id_pregunta;
+           // this.id_pregunta = id_pregunta;
         }
 
-        public Cm_ClsPreguntas(int id_materia, string pregunta)
-        {
-            this.id_materia = id_materia;
-            this.pregunta = pregunta;
+        //public Cm_ClsPreguntas(int id_materia, string pregunta)
+        //{
+        //    this.id_materia = id_materia;
+        //    this.pregunta = pregunta;
+        //}
+
+        public Cm_ClsPreguntas(int id, string respuesta) {
+
+            this.id = id;
+            this.respuesta = respuesta;
         }
 
     }

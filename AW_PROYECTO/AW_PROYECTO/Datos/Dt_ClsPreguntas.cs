@@ -76,7 +76,7 @@ namespace AW_PROYECTO.Datos
 
 
         /*Crear Preguntas */
-        public int crearPreguntas(string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario, int id_pregunta)
+        public int crearPreguntas(string pregunta, string opcion1, string opcion2, string opcion3, string respuesta, int calificacion, int id_materia, int id_usuario)
         {
             List<DbParameter> parametros = new List<DbParameter>();
 
@@ -120,22 +120,59 @@ namespace AW_PROYECTO.Datos
             parametro7.ParameterName = "id_usuario";
             parametros.Add(parametro7);
 
-            DbParameter parametro8 = dpf.CreateParameter();
-            parametro8.Value = id_pregunta;
-            parametro8.ParameterName = "id_pregunta";
-            parametros.Add(parametro8);
+            //DbParameter parametro8 = dpf.CreateParameter();
+            //parametro8.Value = id_pregunta;
+            //parametro8.ParameterName = "id_pregunta";
+            //parametros.Add(parametro8);
 
 
 
             return ejecuteNonQuery("crearRespuesta", parametros);
         }
 
-        /*Consultar Preguntas por Materias*/
+        ///*Consultar Preguntas por Materias*/
 
-        public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)
+        //public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)
+        //{
+        //    List<Cm_ClsPreguntas> preguntas_materia = new List<Cm_ClsPreguntas>();
+        //    String storeProcedure = "listarPreguntasID_Materia";
+
+
+        //    using (DbConnection con = dpf.CreateConnection())
+        //    {
+        //        con.ConnectionString = constr;
+        //        using (DbCommand cmd = dpf.CreateCommand())
+        //        {
+        //            cmd.Connection = con;
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.CommandText = storeProcedure;
+
+        //            DbParameter param = dpf.CreateParameter();
+        //            param.DbType = DbType.Int32;
+        //            param.Value = id_materia;
+        //            param.ParameterName = "id_materia";
+
+        //           cmd.Parameters.Add(param);
+        //            con.Open();
+
+        //            using (DbDataReader dr = cmd.ExecuteReader())
+        //            { // leemos la consulta
+
+        //                if (dr.Read())
+        //                {
+        //                    //preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id"], (string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]));
+        //                    preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id_materia"], (string)dr["pregunta"]));
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return preguntas_materia;
+        //}
+
+        public Cm_ClsPreguntas consultarPreguntasID(int id)
         {
-            List<Cm_ClsPreguntas> preguntas_materia = new List<Cm_ClsPreguntas>();
-            String storeProcedure = "listarPreguntasID_Materia";
+            Cm_ClsPreguntas materias = new Cm_ClsPreguntas();
+            String storeProcedure = "listarPreguntas_ID";
 
 
             using (DbConnection con = dpf.CreateConnection())
@@ -149,10 +186,10 @@ namespace AW_PROYECTO.Datos
 
                     DbParameter param = dpf.CreateParameter();
                     param.DbType = DbType.Int32;
-                    param.Value = id_materia;
-                    param.ParameterName = "id_materia";
+                    param.Value = id;
+                    param.ParameterName = "id";
 
-                   cmd.Parameters.Add(param);
+                    cmd.Parameters.Add(param);
                     con.Open();
 
                     using (DbDataReader dr = cmd.ExecuteReader())
@@ -160,13 +197,12 @@ namespace AW_PROYECTO.Datos
 
                         if (dr.Read())
                         {
-                            //preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id"], (string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]));
-                            preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id_materia"], (string)dr["pregunta"]));
+                            materias = new Cm_ClsPreguntas((string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]);
                         }
                     }
                 }
             }
-            return preguntas_materia;
+            return materias;
         }
 
     }

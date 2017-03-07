@@ -29,7 +29,7 @@ namespace AW_PROYECTO.Presentacion
 
         protected void Btn_Registrar_Click(object sender, EventArgs e)
         {
-            Cm_ClsPreguntas nuevaPregunta = new Cm_ClsPreguntas(txtPregunta.Text, txtOpcion1.Text, txtOpcion2.Text, txtOpcion3.Text, seleccionarRespuesta(respuestaG), 1, Convert.ToInt16(ddlMaterias.SelectedValue), 1, preguntas.Id_pregunta);
+            Cm_ClsPreguntas nuevaPregunta = new Cm_ClsPreguntas(txtPregunta.Text, txtOpcion1.Text, txtOpcion2.Text, txtOpcion3.Text, seleccionarRespuesta(respuestaG), 1, Convert.ToInt16(ddlMaterias.SelectedValue), 1);
             //Cm_ClsOpcionesPregunta nuevasOpciones = new Cm_ClsOpcionesPregunta();
             Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
 

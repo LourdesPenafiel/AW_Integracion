@@ -68,15 +68,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comun\Cm_ClsMaterias.cs" />
-    <Compile Include="Comun\Cm_ClsOpcionesPregunta.cs" />
+    <Compile Include="Comun\Cm_ClsRespuestaUsuario.cs" />
     <Compile Include="Comun\Cm_ClsUsuarios.cs" />
     <Compile Include="Comun\Cm_ClsPreguntas.cs" />
     <Compile Include="Datos\Dt_ClsMaterias.cs" />
-    <Compile Include="Datos\Dt_ClsOpcionesPregunta.cs" />
     <Compile Include="Datos\Dt_ClsPreguntas.cs" />
+    <Compile Include="Datos\Dt_ClsRespuestaUsuario.cs" />
     <Compile Include="Datos\Dt_ClsUsuarios.cs" />
-    <Compile Include="Negocio\Ng_ClsOpcionesPregunta.cs" />
     <Compile Include="Negocio\Ng_ClsPreguntas.cs" />
+    <Compile Include="Negocio\Ng_ClsRespuestaUsuario.cs" />
     <Compile Include="Negocio\Ng_ClsUsuarios.cs" />
     <Compile Include="Negocio\Ng_ClsMaterias.cs" />
     <Compile Include="Presentacion\inicio.aspx.cs">
