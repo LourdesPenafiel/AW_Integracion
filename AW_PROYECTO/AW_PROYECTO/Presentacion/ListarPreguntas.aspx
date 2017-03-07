@@ -141,7 +141,9 @@
                             <td>
                                 <asp:DropDownList ID="ddlPreguntasMaterias" runat="server" AutoPostBack="True" 
                                     DataSourceID="ConsultaPreguntas" DataTextField="pregunta" DataValueField="id" 
-                                    Height="25px" ontextchanged="ddlPreguntasMaterias_TextChanged" Width="250px">
+                                    Height="25px" ontextchanged="ddlPreguntasMaterias_TextChanged" 
+                                    Width="250px" 
+                                    onselectedindexchanged="ddlPreguntasMaterias_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="ConsultaPreguntas" runat="server" 
                                     ConnectionString="<%$ ConnectionStrings:Conn %>" 

@@ -16,6 +16,7 @@ namespace AW_PROYECTO.Presentacion
         string respuestaG;
         int totalPreguntasMateria;
         static int sumaAciertos = 0;
+        static int cont = 0;
         List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
         List<Cm_ClsPreguntas> preguntas = new List<Cm_ClsPreguntas>();
 
@@ -68,12 +69,20 @@ namespace AW_PROYECTO.Presentacion
 
         protected void ddlPreguntasMaterias_TextChanged(object sender, EventArgs e)
         {
+           
+           
             Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
 
             int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
             mostrar(seleccionarPregunta);
-            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count);
+            if (cont == 0)
+            {
+                ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
+                cont = 1;
+            }
+           
+            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count)-1;
             txtNota.Text = totalPreguntasMateria.ToString();
 
 
@@ -157,6 +166,12 @@ namespace AW_PROYECTO.Presentacion
         protected void ddlMaterias_SelectedIndexChanged(object sender, EventArgs e)
         {
             sumaAciertos = 0;
+           
+        }
+
+        protected void ddlPreguntasMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
 
