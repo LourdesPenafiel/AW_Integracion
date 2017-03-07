@@ -17,8 +17,17 @@ namespace AW_PROYECTO.Presentacion
         List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
         Cm_ClsPreguntas preguntas = new Cm_ClsPreguntas();
 
+        static Cm_ClsUsuarios logUsuario = new Cm_ClsUsuarios();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            logUsuario = (Cm_ClsUsuarios)(Session["Usuario"]);
+
+            if (logUsuario==null)
+            {
+            Response.Redirect("/Presentacion/Inicio.aspx");
+            }
             if (!IsPostBack)
             {
                 cargarDropDownList();
@@ -31,7 +40,7 @@ namespace AW_PROYECTO.Presentacion
         {
             Cm_ClsPreguntas nuevaPregunta = new Cm_ClsPreguntas(txtPregunta.Text,
                 txtOpcion1.Text, txtOpcion2.Text, txtOpcion3.Text, seleccionarRespuesta(respuestaG),
-                1, Convert.ToInt16(ddlMaterias.SelectedValue), 1);
+                1, Convert.ToInt16(ddlMaterias.SelectedValue), logUsuario.Id);
             Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
 
             if ((ng_preguntas.crearPreguntas(nuevaPregunta) > 0))
@@ -55,6 +64,10 @@ namespace AW_PROYECTO.Presentacion
             txtOpcion1.Text = "";
             txtOpcion2.Text = "";
             txtOpcion3.Text = "";
+            opcion1.Checked = false;
+            opcion2.Checked = false;
+            opcion3.Checked = false;
+            ddlMaterias.SelectedIndex = 0;
         }
 
         private void cargarDropDownList()

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,15 +20,10 @@ namespace AW_PROYECTO.Negocio
         public int registroRespuestas(Cm_ClsRespuestaUsuario respuesta)
         {
             Dt_ClsRespuestaUsuario dt_respuesta = new Dt_ClsRespuestaUsuario();
-            return dt_respuesta.registroRespuestas(respuesta.Id_usuario, respuesta.Id_opciones_respuesta);
+            return dt_respuesta.registroRespuestas(respuesta.Id_usuario, respuesta.Id_pregunta);
         }
 
-        public Cm_ClsPreguntas consultarPreguntasID(int IdPregunta)
-        {
-            Dt_ClsRespuestaUsuario dt_materias = new Dt_ClsRespuestaUsuario();
 
-            return dt_materias.consultarPreguntasID(IdPregunta);
-        }
 
     }
 }

@@ -42,6 +42,7 @@ namespace AW_PROYECTO.Presentacion
 
         protected void Btn_Usuarios_Click(object sender, EventArgs e)
         {
+            Session.Add("Usuario", logUsuario); 
             Response.Redirect("/Presentacion/Preguntas.aspx");
         }
 

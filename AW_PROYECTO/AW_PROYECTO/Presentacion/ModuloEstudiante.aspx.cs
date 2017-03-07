@@ -43,12 +43,18 @@ namespace AW_PROYECTO.Presentacion
 
         protected void Btn_Usuarios_Click(object sender, EventArgs e)
         {
+            Session.Add("Usuario", logUsuario); 
             Response.Redirect("/Presentacion/ListarPreguntas.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Salir();
+        }
+
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

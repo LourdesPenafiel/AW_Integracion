@@ -22,6 +22,15 @@ namespace AW_PROYECTO.Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Control Btn_Inicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Inicio;
+        
+        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace AW_PROYECTO.Presentacion {
         protected global::System.Web.UI.WebControls.SqlDataSource ConsultarMateria;
         
         /// <summary>
-        /// Control Btn_Registrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Registrar;
-        
-        /// <summary>
         /// Control Btn_Modificar.
         /// </summary>
         /// <remarks>
@@ -65,6 +65,15 @@ namespace AW_PROYECTO.Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Modificar;
+        
+        /// <summary>
+        /// Control Btn_Registrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Registrar;
         
         /// <summary>
         /// Control gvrMaterias.

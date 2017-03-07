@@ -197,7 +197,8 @@ namespace AW_PROYECTO.Datos
 
                         if (dr.Read())
                         {
-                            materias = new Cm_ClsPreguntas((string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]);
+                            materias = new Cm_ClsPreguntas(
+                                (string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]);
                         }
                     }
                 }

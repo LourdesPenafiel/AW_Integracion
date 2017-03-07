@@ -63,24 +63,6 @@ namespace AW_PROYECTO.Presentacion
         }
 
 
-        //public void mostrarPreguntas()
-        //{
-        //    consultarPreguntas();
-        //    ddlPreguntasMaterias.DataSource = preguntas;
-        //    ddlPreguntasMaterias.DataValueField = "id_materia";
-        //    ddlPreguntasMaterias.DataTextField = "pregunta";/*Esto hace que el nombre del getter & setter tome el nombre en el gv*/
-        //    ddlPreguntasMaterias.DataBind();
-        //    ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
-
-        //}
-        //public void consultarPreguntas()
-        //{
-        //    int indice = Convert.ToInt16(ddlMaterias.SelectedValue);
-        //    Ng_ClsPreguntas ng_preguntas = new Ng_ClsPreguntas();
-        //    preguntas = ng_preguntas.consultarPreguntasID_Materia(indice);
-
-        //}
-
 
 
 
@@ -91,8 +73,7 @@ namespace AW_PROYECTO.Presentacion
             int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
             Cm_ClsPreguntas seleccionarPregunta = ng_preguntas.consultarPreguntasID(indice);
             mostrar(seleccionarPregunta);
-            ddlPreguntasMaterias.Items.Insert(0, new ListItem("--SELECT--", "0"));
-            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count) - 1;
+            totalPreguntasMateria = Convert.ToInt16(ddlPreguntasMaterias.Items.Count);
             txtNota.Text = totalPreguntasMateria.ToString();
 
 
@@ -171,6 +152,11 @@ namespace AW_PROYECTO.Presentacion
                 respuestaG = respuesta;
             }
             return respuestaG;
+        }
+
+        protected void ddlMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sumaAciertos = 0;
         }
 
 
