@@ -75,7 +75,7 @@ namespace AW_PROYECTO.Datos
         }
 
         /*Registro de Respuestas */
-        public int registroRespuestas(int id_usuario, int id_opciones_respuesta)
+        public int registroRespuestas(int id_usuario, int id_opciones_respuesta, Boolean preguntarespondida)
         {
             List<DbParameter> parametros = new List<DbParameter>();
 
@@ -89,8 +89,53 @@ namespace AW_PROYECTO.Datos
             parametro1.ParameterName = "id_pregunta";
             parametros.Add(parametro1);
 
+            DbParameter parametro2 = dpf.CreateParameter();
+            parametro2.Value = preguntarespondida;
+            parametro2.ParameterName = "preguntarespondida";
+            parametros.Add(parametro2);
+
+
             return ejecuteNonQuery("registroRespuesta", parametros);
         }
+
+        /*Comprobar que el usuario haya respondido*/
+
+        public Boolean pregunta_respondida_usuario(int id_usuario, int id_pregunta)
+        {
+            Boolean respondida = false;
+            String storeProcedure = "preguntasRespondidas_Usuario";
+
+
+            using (DbConnection con = dpf.CreateConnection())
+            {
+                con.ConnectionString = constr;
+                using (DbCommand cmd = dpf.CreateCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = storeProcedure;
+
+                    DbParameter param = dpf.CreateParameter();
+                    param.DbType = DbType.Int32;
+                    param.Value = id_usuario;
+                    param.ParameterName = "id_usuario";
+
+                    DbParameter param1 = dpf.CreateParameter();
+                    param1.DbType = DbType.Int32;
+                    param1.Value = id_pregunta;
+                    param1.ParameterName = "id_pregunta";
+
+                    cmd.Parameters.Add(param);
+                    cmd.Parameters.Add(param1);
+                    con.Open();
+                    respondida = (Boolean)(cmd.ExecuteScalar());
+
+                }
+            }
+            return respondida;
+
+        }
+
 
     }
 }

@@ -37,7 +37,6 @@ namespace AW_PROYECTO.Negocio
         public Cm_ClsMaterias consultarMateriasID(int IdMateria)
         {
             Dt_ClsMaterias dt_materias = new Dt_ClsMaterias();
-
             return dt_materias.consultarMateriasID(IdMateria);
         }
     }

@@ -34,7 +34,7 @@ namespace AW_PROYECTO.Presentacion
         }
 
         
-private void limpiarCampos()
+        private void limpiarCampos()
         {
             txtNombre.Text = "";
 

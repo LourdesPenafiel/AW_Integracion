@@ -78,11 +78,6 @@ namespace AW_PROYECTO.Presentacion
 
         }
                 
-                
-
-        
-
-
         private void limpiarCampos() {
 
             txtUsuario.Text = "";
@@ -105,7 +100,6 @@ namespace AW_PROYECTO.Presentacion
         protected void ddlUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
             Ng_ClsUsuarios ng_usuarios = new Ng_ClsUsuarios();
-
             int indice = Convert.ToInt16(ddlUsuarios.SelectedValue);
             Cm_ClsUsuarios seleccionarUsuario = ng_usuarios.consultarUsuariosID(indice);
             mostrar(seleccionarUsuario);

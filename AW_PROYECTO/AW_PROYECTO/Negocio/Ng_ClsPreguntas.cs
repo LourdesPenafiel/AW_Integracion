@@ -29,5 +29,19 @@ namespace AW_PROYECTO.Negocio
 
             return dt_materias.consultarPreguntasID(IdPregunta);
         }
+
+        public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)
+        {
+            Dt_ClsPreguntas dt_preguntas = new Dt_ClsPreguntas();
+            return dt_preguntas.consultarPreguntasID_Materia(id_materia);
+        }
+
+
+        public int contarPreguntasID_Materia(int contarPreguntas)
+        {
+            Dt_ClsPreguntas dt_preguntas = new Dt_ClsPreguntas();
+            return dt_preguntas.contarPreguntasID_Materia(contarPreguntas);
+        }
+        
     }
 }

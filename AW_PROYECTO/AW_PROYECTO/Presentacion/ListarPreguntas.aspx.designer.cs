@@ -67,15 +67,6 @@ namespace AW_PROYECTO.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlPreguntasMaterias;
         
         /// <summary>
-        /// Control ConsultaPreguntas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ConsultaPreguntas;
-        
-        /// <summary>
         /// Control RequiredFieldValidator1.
         /// </summary>
         /// <remarks>

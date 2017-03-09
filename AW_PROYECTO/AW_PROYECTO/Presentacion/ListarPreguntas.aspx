@@ -81,7 +81,8 @@ CodeBehind="ListarPreguntas.aspx.cs" Inherits="AW_PROYECTO.Presentacion.ListarPr
                             <td align="right" class="nota">&nbsp;</td>
                             <td>
                                 Seleccionar materia<asp:DropDownList ID="ddlMaterias" runat="server" Height="25px" 
-                                    onselectedindexchanged="ddlMaterias_SelectedIndexChanged" Width="80%">
+                                    Width="80%" 
+                                    ontextchanged="ddlMaterias_TextChanged">
         </asp:DropDownList>
                             </td>
                             <td class="frase">
@@ -101,20 +102,11 @@ CodeBehind="ListarPreguntas.aspx.cs" Inherits="AW_PROYECTO.Presentacion.ListarPr
                             <td align="right" class="nota">
                                 &nbsp;</td>
                             <td>
-                                Seleccione pregunta<asp:DropDownList ID="ddlPreguntasMaterias" runat="server" AutoPostBack="True" 
-                                    DataSourceID="ConsultaPreguntas" DataTextField="pregunta" DataValueField="id" 
+                                Seleccione pregunta<asp:DropDownList ID="ddlPreguntasMaterias" runat="server" 
+                                    DataTextField="pregunta" DataValueField="id" 
                                     Height="25px" ontextchanged="ddlPreguntasMaterias_TextChanged" 
-                                    Width="80%" 
-                                    onselectedindexchanged="ddlPreguntasMaterias_SelectedIndexChanged">
+                                    Width="80%">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="ConsultaPreguntas" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:Conn %>" 
-                                    SelectCommand="SELECT id, pregunta FROM PREGUNTAS WHERE (id_materia = @id_materia) AND (respondio = 0)">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="ddlMaterias" Name="id_materia" 
-                                            PropertyName="SelectedValue" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                                     ControlToValidate="ddlPreguntasMaterias" ErrorMessage="Indica pregunta"></asp:RequiredFieldValidator>
                             </td>

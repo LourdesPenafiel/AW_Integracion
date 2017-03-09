@@ -130,44 +130,46 @@ namespace AW_PROYECTO.Datos
             return ejecuteNonQuery("crearRespuesta", parametros);
         }
 
-        ///*Consultar Preguntas por Materias*/
+        /*Consultar Preguntas por Materias*/
 
-        //public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)
-        //{
-        //    List<Cm_ClsPreguntas> preguntas_materia = new List<Cm_ClsPreguntas>();
-        //    String storeProcedure = "listarPreguntasID_Materia";
+        public List<Cm_ClsPreguntas> consultarPreguntasID_Materia(int id_materia)
+        {
+            List<Cm_ClsPreguntas> preguntas_materia = new List<Cm_ClsPreguntas>();
+            String storeProcedure = "PreguntasPorID_Materia";
 
 
-        //    using (DbConnection con = dpf.CreateConnection())
-        //    {
-        //        con.ConnectionString = constr;
-        //        using (DbCommand cmd = dpf.CreateCommand())
-        //        {
-        //            cmd.Connection = con;
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.CommandText = storeProcedure;
+            using (DbConnection con = dpf.CreateConnection())
+            {
+                con.ConnectionString = constr;
+                using (DbCommand cmd = dpf.CreateCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = storeProcedure;
 
-        //            DbParameter param = dpf.CreateParameter();
-        //            param.DbType = DbType.Int32;
-        //            param.Value = id_materia;
-        //            param.ParameterName = "id_materia";
+                    DbParameter param = dpf.CreateParameter();
+                    param.DbType = DbType.Int32;
+                    param.Value = id_materia;
+                    param.ParameterName = "id_materia";
 
-        //           cmd.Parameters.Add(param);
-        //            con.Open();
+                    cmd.Parameters.Add(param);
+                    con.Open();
 
-        //            using (DbDataReader dr = cmd.ExecuteReader())
-        //            { // leemos la consulta
+                    using (DbDataReader dr = cmd.ExecuteReader())
+                    { // leemos la consulta
 
-        //                if (dr.Read())
-        //                {
-        //                    //preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id"], (string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]));
-        //                    preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id_materia"], (string)dr["pregunta"]));
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return preguntas_materia;
-        //}
+                        while (dr.Read())
+                        {
+                            preguntas_materia.Add(new Cm_ClsPreguntas((int)dr["id"], (string)dr["pregunta"], (string)dr["opcion1"], (string)dr["opcion2"], (string)dr["opcion3"], (string)dr["respuesta"], (int)dr["calificacion"], (int)dr["id_materia"], (int)dr["id_usuario"]));
+                            
+                        }
+                    }
+                }
+            }
+            
+            return preguntas_materia;
+       
+        }
 
         public Cm_ClsPreguntas consultarPreguntasID(int id)
         {
@@ -204,6 +206,36 @@ namespace AW_PROYECTO.Datos
                 }
             }
             return materias;
+        }
+
+        public int contarPreguntasID_Materia(int id_materia)
+        {
+            Int32 contar = 0;
+            String storeProcedure = "ContarPreguntasPorID_Materia";
+
+
+            using (DbConnection con = dpf.CreateConnection())
+            {
+                con.ConnectionString = constr;
+                using (DbCommand cmd = dpf.CreateCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = storeProcedure;
+
+                    DbParameter param = dpf.CreateParameter();
+                    param.DbType = DbType.Int32;
+                    param.Value = id_materia;
+                    param.ParameterName = "id_materia";
+
+                    cmd.Parameters.Add(param);
+                    con.Open();
+                    contar = (Int32)(cmd.ExecuteScalar());
+                          
+                }
+            }
+            return contar;
+            
         }
 
     }
