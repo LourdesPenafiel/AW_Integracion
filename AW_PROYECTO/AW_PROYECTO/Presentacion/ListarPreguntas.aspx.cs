@@ -174,6 +174,11 @@ namespace AW_PROYECTO.Presentacion
 
         }
 
+        protected void Btn_Inicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

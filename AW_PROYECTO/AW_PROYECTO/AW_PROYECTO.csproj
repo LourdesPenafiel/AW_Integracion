@@ -51,7 +51,52 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Presentacion\Estilos\Estilos_Css.css" />
+    <Content Include="Presentacion\Estilos\Galeria.css" />
+    <Content Include="Presentacion\Galeria\1.jpg" />
+    <Content Include="Presentacion\Galeria\2.jpg" />
+    <Content Include="Presentacion\Galeria\3.jpg" />
+    <Content Include="Presentacion\Galeria\4.jpg" />
+    <Content Include="Presentacion\Galeria\5.jpg" />
     <Content Include="Presentacion\imagen.aspx" />
+    <Content Include="Presentacion\Images\Admi.png" />
+    <Content Include="Presentacion\Images\arrow.gif" />
+    <Content Include="Presentacion\Images\banner-img.jpg" />
+    <Content Include="Presentacion\Images\btn-banner-h.gif" />
+    <Content Include="Presentacion\Images\btn-banner.gif" />
+    <Content Include="Presentacion\Images\btn-more-h.gif" />
+    <Content Include="Presentacion\Images\btn-more-n.gif" />
+    <Content Include="Presentacion\Images\btn-submit-h.gif" />
+    <Content Include="Presentacion\Images\btn-submit.gif" />
+    <Content Include="Presentacion\Images\epnlogo.png" />
+    <Content Include="Presentacion\Images\icon-aol.gif" />
+    <Content Include="Presentacion\Images\icon-aol1.gif" />
+    <Content Include="Presentacion\Images\icon-aol2.gif" />
+    <Content Include="Presentacion\Images\icon-arrow-left.gif" />
+    <Content Include="Presentacion\Images\icon-arrow-right.gif" />
+    <Content Include="Presentacion\Images\icon-facebook.gif" />
+    <Content Include="Presentacion\Images\icon-fb.gif" />
+    <Content Include="Presentacion\Images\icon-linkde.gif" />
+    <Content Include="Presentacion\Images\icon-linkedin.gif" />
+    <Content Include="Presentacion\Images\icon-twit.gif" />
+    <Content Include="Presentacion\Images\icon-twitter.gif" />
+    <Content Include="Presentacion\Images\img-1.jpg" />
+    <Content Include="Presentacion\Images\img-cir-h.gif" />
+    <Content Include="Presentacion\Images\img-cir-n.gif" />
+    <Content Include="Presentacion\Images\menu-h.gif" />
+    <Content Include="Presentacion\Images\menu.gif" />
+    <Content Include="Presentacion\Images\news-letter-bg-1.gif" />
+    <Content Include="Presentacion\Images\news-letter-bg-2.gif" />
+    <Content Include="Presentacion\Images\panel-bg.gif" />
+    <Content Include="Presentacion\Images\panel-bottom.gif" />
+    <Content Include="Presentacion\Images\panel-icon-1.gif" />
+    <Content Include="Presentacion\Images\panel-icon-2.gif" />
+    <Content Include="Presentacion\Images\panel-icon-3.gif" />
+    <Content Include="Presentacion\Images\panel-top.gif" />
+    <Content Include="Presentacion\Images\regresar.png" />
+    <Content Include="Presentacion\Images\slider-bg.gif" />
+    <Content Include="Presentacion\Images\testimonilas-bg.gif" />
+    <Content Include="Presentacion\Images\top-strip.gif" />
     <Content Include="Presentacion\inicio.aspx" />
     <Content Include="Presentacion\ListarPreguntas.aspx" />
     <Content Include="Presentacion\Materias.aspx" />
@@ -130,6 +175,13 @@
     <Compile Include="Presentacion\ModuloProfesor.aspx.designer.cs">
       <DependentUpon>ModuloProfesor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\PaginaPrincipal.Master.cs">
+      <DependentUpon>PaginaPrincipal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\PaginaPrincipal.Master.designer.cs">
+      <DependentUpon>PaginaPrincipal.Master</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Preguntas.aspx.cs">
       <DependentUpon>Preguntas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -146,7 +198,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Presentacion\PaginaPrincipal.Master" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
@@ -155,7 +209,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51188</DevelopmentServerPort>
+          <DevelopmentServerPort>50500</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

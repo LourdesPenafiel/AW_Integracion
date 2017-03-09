@@ -30,14 +30,22 @@ namespace AW_PROYECTO.Presentacion
                 archivoImagen.InputStream.Read(byteImage, 0, fluFotoEmpleado.PostedFile.ContentLength);
                 Cm_ClsUsuarios nuevoUsuario = new Cm_ClsUsuarios(txtnombre.Text,txtapellido.Text, byteImage, txtUsuario.Text, txtContrasena.Text,  dRol.SelectedValue);
                 if ((ng_usuarios.crearUsuarios(nuevoUsuario) > 0))
-            {
-                limpiarCampos();
-            
+                {
+                    limpiarCampos();
+
                     string script = @"<script type='text/javascript'>
                     alert('Registro Guardado!!');
                     </script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "Integracion ASI", script, false);
                     Response.Redirect("/Presentacion/Usuarios.aspx");
+                }
+                else
+                {
+                    string script = @"<script type='text/javascript'>
+                    alert('Usuario existente elige otro!!');
+                    </script>";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Integracion ASI", script, false);
+                
                 }
             }
         }
