@@ -25,7 +25,7 @@ namespace AW_PROYECTO.Presentacion
                 {
                     this.txtNombre.Text = logUsuario.Nombre + " " + logUsuario.Apellido;
                     this.txtApellido.Text = logUsuario.Tipo_usuario;
-                    this.img1.ImageUrl = "http://localhost:51188/Presentacion/imagen.aspx?ID=" + Convert.ToString(logUsuario.Id);
+                    this.img1.ImageUrl = "http://localhost:50500/Presentacion/imagen.aspx?ID=" + Convert.ToString(logUsuario.Id);
                 }
                 else {
                     Salir();

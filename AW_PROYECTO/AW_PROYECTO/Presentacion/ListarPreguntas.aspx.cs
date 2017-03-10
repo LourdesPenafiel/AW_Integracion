@@ -20,8 +20,13 @@ namespace AW_PROYECTO.Presentacion
         List<Cm_ClsMaterias> materias = new List<Cm_ClsMaterias>();
         List<Cm_ClsPreguntas> preguntas = new List<Cm_ClsPreguntas>();
 
+        static Cm_ClsUsuarios logUsuario = new Cm_ClsUsuarios();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            logUsuario = (Cm_ClsUsuarios)(Session["Usuario"]);
+            ClientScript.RegisterStartupScript(this.GetType(), "Mensaje", "alert('"+logUsuario.Id+"');", true);
             if (!IsPostBack)
             {
 
@@ -84,7 +89,7 @@ namespace AW_PROYECTO.Presentacion
 
             Boolean respondido;
             Ng_ClsRespuestaUsuario ng_respuesta = new Ng_ClsRespuestaUsuario();
-            respondido = ng_respuesta.pregunta_respondida_usuario(4, Convert.ToInt16(ddlPreguntasMaterias.SelectedValue));
+            respondido = ng_respuesta.pregunta_respondida_usuario(logUsuario.Id, Convert.ToInt16(ddlPreguntasMaterias.SelectedValue));
             if (respondido)
             {
                 Btn_Responder.Visible = false;
@@ -108,7 +113,9 @@ namespace AW_PROYECTO.Presentacion
 
         protected void Btn_Responder_Click1(object sender, EventArgs e)
         {
-            Cm_ClsRespuestaUsuario nuevaRespuesta = new Cm_ClsRespuestaUsuario(4, Convert.ToInt16(ddlPreguntasMaterias.SelectedValue), true);
+            
+            Cm_ClsRespuestaUsuario nuevaRespuesta = new Cm_ClsRespuestaUsuario(
+                logUsuario.Id, Convert.ToInt16(ddlPreguntasMaterias.SelectedValue), true);
             Ng_ClsRespuestaUsuario ng_respuesta = new Ng_ClsRespuestaUsuario();
 
             int indice = Convert.ToInt16(ddlPreguntasMaterias.SelectedValue);
